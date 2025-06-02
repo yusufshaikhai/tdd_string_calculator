@@ -20,10 +20,11 @@
 // If there are multiple negative numbers, show all of them in the exception message, separated by commas.
 
 function add(string_numbers) {
-  if(!string_numbers) return 0;
-  if(string_numbers.length == 1) return Number(string_numbers);
-  const numbers = string_numbers.split(",");
-  return Number(numbers[0]) + Number(numbers[1]);
+  const sum = string_numbers
+                .split(",")
+                .map((n) => Number(n))
+                .reduce((prev, sum) => prev + sum);
+  return sum;
 }
 
 module.exports = add;
