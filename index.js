@@ -20,11 +20,17 @@
 // If there are multiple negative numbers, show all of them in the exception message, separated by commas.
 
 function add(string_numbers) {
-  const delimiter = /[\n,]/;
+  let delimiter = ",";
+  const m = string_numbers.match(/^\/\/(.+)\n/);
+  if(m){
+    delimiter = m[1];
+    string_numbers = string_numbers.slice(m[0].length);
+  }
+  const regex = new RegExp(`[\n|${delimiter}]+`);
   const sum = string_numbers
-                .split(delimiter)
-                .map((n) => Number(n))
-                .reduce((prev, sum) => prev + sum);
+              .split(regex)
+              .map((n) => Number(n))
+              .reduce((prev, sum) => prev + sum);
   return sum;
 }
 

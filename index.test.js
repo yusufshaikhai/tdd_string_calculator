@@ -23,3 +23,7 @@ test('value should be sum of all number for given string', () => {
 test('value should be sum of all number for given string with new lines', () => { 
   expect(add("1\n2,3")).toBe(6);
 })
+
+test('pass delimiter start of the string with new line & sum of all numbers', () => { 
+  expect(add("//;\n1;2")).toBe(3);
+})
