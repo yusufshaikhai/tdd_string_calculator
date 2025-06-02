@@ -27,3 +27,13 @@ test('value should be sum of all number for given string with new lines', () => 
 test('pass delimiter start of the string with new line & sum of all numbers', () => { 
   expect(add("//;\n1;2")).toBe(3);
 })
+
+test('negative numbers not allowed', () => { 
+  expect(() => add("2,-3,1"))
+      .toThrow('negative numbers not allowed -3');
+})
+
+test('negative numbers not allowed', () => { 
+  expect(() => add("-2,-3,1"))
+      .toThrow('negative numbers not allowed -2,-3');
+})

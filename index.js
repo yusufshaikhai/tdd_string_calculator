@@ -27,11 +27,14 @@ function add(string_numbers) {
     string_numbers = string_numbers.slice(m[0].length);
   }
   const regex = new RegExp(`[\n|${delimiter}]+`);
-  const sum = string_numbers
+  const numbers = string_numbers
               .split(regex)
-              .map((n) => Number(n))
-              .reduce((prev, sum) => prev + sum);
-  return sum;
+              .map((n) => Number(n));
+  const negative_numbers = numbers.filter(n => n < 0);
+  if(negative_numbers.length){
+    throw new Error(`negative numbers not allowed ${negative_numbers.join(",")}`);
+  }
+  return numbers.reduce((prev, sum) => prev + sum);
 }
 
 module.exports = add;
