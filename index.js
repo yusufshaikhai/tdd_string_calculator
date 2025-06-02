@@ -20,8 +20,9 @@
 // If there are multiple negative numbers, show all of them in the exception message, separated by commas.
 
 function add(string_numbers) {
+  const delimiter = /[\n,]/;
   const sum = string_numbers
-                .split(",")
+                .split(delimiter)
                 .map((n) => Number(n))
                 .reduce((prev, sum) => prev + sum);
   return sum;

@@ -19,3 +19,7 @@ test('value should be 5 for string "2,3"', () => {
 test('value should be sum of all number for given string', () => { 
   expect(add("3,2,5,6,7,1,10,34,24,35")).toBe(3+2+5+6+7+1+10+34+24+35);  
 })
+
+test('value should be sum of all number for given string with new lines', () => { 
+  expect(add("1\n2,3")).toBe(6);
+})
