@@ -11,3 +11,7 @@ test('value should be 1 for string 1', () => {
 test('value should be 2 for string 2', () => { 
   expect(add("2")).toBe(2);  
 })
+
+test('value should be 5 for string "2,3"', () => { 
+  expect(add("2,3")).toBe(5);  
+})
