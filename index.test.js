@@ -1,5 +1,13 @@
 const add = require(".");
 
-test('', () => { 
+test('value should be zero for empty string', () => { 
   expect(add("")).toBe(0);  
+})
+
+test('value should be 1 for string 1', () => { 
+  expect(add("1")).toBe(1);  
+})
+
+test('value should be 2 for string 2', () => { 
+  expect(add("2")).toBe(2);  
 })

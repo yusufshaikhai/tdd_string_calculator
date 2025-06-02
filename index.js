@@ -20,7 +20,8 @@
 // If there are multiple negative numbers, show all of them in the exception message, separated by commas.
 
 function add(numbers) {
-  
+  if(!numbers) return 0;
+  return Number(numbers);
 }
 
 module.exports = add;
