@@ -37,3 +37,12 @@ test('negative numbers not allowed', () => {
   expect(() => add("-2,-3,1"))
       .toThrow('negative numbers not allowed -2,-3');
 })
+
+// '12,213,asb,232,asd,as,23'
+test('test the number & alphabets', () => {
+  expect(() => add("12,213,asb,232,asd,as")).toThrow('invalid input asb,asd,as')
+})
+
+test('test the number & alphabets', () => {
+  expect(() => add("12,213,asb,232,asd,as,-23")).toThrow('invalid input asb,asd,as')
+})

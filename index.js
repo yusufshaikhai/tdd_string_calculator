@@ -27,14 +27,16 @@ function add(string_numbers) {
     string_numbers = string_numbers.slice(m[0].length);
   }
   const regex = new RegExp(`[\n|${delimiter}]+`);
-  const numbers = string_numbers
-              .split(regex)
-              .map((n) => Number(n));
-  const negative_numbers = numbers.filter(n => n < 0);
+  const strNumbers = string_numbers.split(regex);
+  const notNumber = strNumbers.filter(num => isNaN(num));
+  if(notNumber.length){
+    throw new Error(`invalid input ${notNumber.join(",")}`);
+  }
+  const negative_numbers = strNumbers.filter(n => Number(n) < 0);
   if(negative_numbers.length){
     throw new Error(`negative numbers not allowed ${negative_numbers.join(",")}`);
   }
-  return numbers.reduce((prev, sum) => prev + sum);
+  return strNumbers.reduce((total, value) => total + Number(value), 0);
 }
 
 module.exports = add;
