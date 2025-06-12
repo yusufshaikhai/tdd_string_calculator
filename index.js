@@ -36,7 +36,7 @@ function add(string_numbers) {
   if(negative_numbers.length){
     throw new Error(`negative numbers not allowed ${negative_numbers.join(",")}`);
   }
-  return strNumbers.reduce((total, value) => total + Number(value), 0);
+  return strNumbers.filter((value) => Number(value) < 1000).reduce((total, value) => total + Number(value), 0);
 }
 
 module.exports = add;

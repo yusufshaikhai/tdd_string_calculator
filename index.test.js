@@ -46,3 +46,8 @@ test('test the number & alphabets', () => {
 test('test the number & alphabets', () => {
   expect(() => add("12,213,asb,232,asd,as,-23")).toThrow('invalid input asb,asd,as')
 })
+
+// 1, 1001, 2 , 1003
+test('number greater than 1000 should be ignored', () => {
+  expect(add("1,1001,2,1003")).toBe(3);
+})
