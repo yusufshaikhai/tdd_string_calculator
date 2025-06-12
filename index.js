@@ -19,24 +19,28 @@
 
 // If there are multiple negative numbers, show all of them in the exception message, separated by commas.
 
-function add(string_numbers) {
+function add(input) {
   let delimiter = ",";
-  const m = string_numbers.match(/^\/\/(.+)\n/);
+  const m = input.match(/^\/\/(.+)\n/);
   if(m){
     delimiter = m[1];
-    string_numbers = string_numbers.slice(m[0].length);
+    input = input.slice(m[0].length);
   }
   const regex = new RegExp(`[\n|${delimiter}]+`);
-  const strNumbers = string_numbers.split(regex);
-  const notNumber = strNumbers.filter(num => isNaN(num));
-  if(notNumber.length){
-    throw new Error(`invalid input ${notNumber.join(",")}`);
+
+  const numberStrings = input.split(regex);
+
+  const notNumbers = numberStrings.filter(str => isNaN(str));
+  if(notNumbers.length){
+    throw new Error(`invalid input ${notNumbers.join(",")}`);
   }
-  const negative_numbers = strNumbers.filter(n => Number(n) < 0);
-  if(negative_numbers.length){
-    throw new Error(`negative numbers not allowed ${negative_numbers.join(",")}`);
+
+  const numbers = numberStrings.map(numStr => Number(numStr));
+  const negatives = numbers.filter(num => num < 0);
+  if(negatives.length){
+    throw new Error(`negative numbers not allowed ${negatives.join(",")}`);
   }
-  return strNumbers.filter((value) => Number(value) < 1000).reduce((total, value) => total + Number(value), 0);
+  return numbers.filter(num => num < 1000).reduce((total, num) => total + num, 0);
 }
 
 module.exports = add;
